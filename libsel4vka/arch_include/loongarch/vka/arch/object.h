@@ -24,7 +24,7 @@ vka_arch_get_object_size(seL4_Word objectType)
     case seL4_LOONGARCH_Mega_Page:
         return seL4_LargePageBits;
 #if CONFIG_PT_LEVELS > 2
-    case seL4_LOONGARCH_64Giga_Page:
+    case seL4_LOONGARCH_Giga_Page:
         return seL4_HugePageBits;
 #endif
 #if CONFIG_PT_LEVELS > 3
