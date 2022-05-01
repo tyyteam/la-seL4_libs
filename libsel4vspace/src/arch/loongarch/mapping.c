@@ -17,7 +17,7 @@ int vspace_get_map_obj(seL4_Word failed_bits, vspace_map_obj_t *obj) {
     }
 
     obj->size_bits = seL4_PageTableBits;
-    obj->type = seL4_RISCV_PageTableObject;
-    obj->map_fn = seL4_RISCV_PageTable_Map;
+    obj->type = seL4_LOONGARCH_PageTableObject;
+    obj->map_fn = seL4_LOONGARCH_PageTable_Map;
     return 0;
 }

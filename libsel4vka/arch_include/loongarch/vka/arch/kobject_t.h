@@ -48,20 +48,20 @@ static inline seL4_Word arch_kobject_get_type(int type, seL4_Word objectSize)
     switch (type) {
     case KOBJECT_PAGE_DIRECTORY:
     case KOBJECT_PAGE_TABLE:
-        return seL4_RISCV_PageTableObject;
+        return seL4_LOONGARCH_PageTableObject;
     case KOBJECT_FRAME:
         switch (objectSize) {
         case seL4_PageBits:
-            return seL4_RISCV_4K_Page;
+            return seL4_LOONGARCH_16K_Page;
         case seL4_LargePageBits:
-            return seL4_RISCV_Mega_Page;
+            return seL4_LOONGARCH_Mega_Page;
 #if CONFIG_PT_LEVELS > 2
         case seL4_HugePageBits:
-            return seL4_RISCV_Giga_Page;
+            return seL4_LOONGARCH_Giga_Page;
 #endif
 #if CONFIG_PT_LEVELS > 3
         case seL4_TeraPageBits:
-            return seL4_RISCV_Tera_Page;
+            return seL4_LOONGARCH_Tera_Page;
 #endif
         default:
             ZF_LOGE("Unknown frame size %zu", (size_t) objectSize);
