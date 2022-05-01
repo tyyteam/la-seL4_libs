@@ -19,19 +19,19 @@ static inline unsigned long
 vka_arch_get_object_size(seL4_Word objectType)
 {
     switch (objectType) {
-    case seL4_RISCV_4K_Page:
+    case seL4_LOONGARCH_16K_Page:
         return seL4_PageBits;
-    case seL4_RISCV_Mega_Page:
+    case seL4_LOONGARCH_Mega_Page:
         return seL4_LargePageBits;
 #if CONFIG_PT_LEVELS > 2
-    case seL4_RISCV_Giga_Page:
+    case seL4_LOONGARCH_64Giga_Page:
         return seL4_HugePageBits;
 #endif
 #if CONFIG_PT_LEVELS > 3
-    case seL4_RISCV_Tera_Page:
+    case seL4_LOONGARCH_Tera_Page:
         return seL4_TeraPageBits;
 #endif
-    case seL4_RISCV_PageTableObject:
+    case seL4_LOONGARCH_PageTableObject:
         return seL4_PageTableBits;
 
     default:
