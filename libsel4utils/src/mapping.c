@@ -90,7 +90,7 @@ int sel4utils_map_page(vka_t *vka, seL4_CPtr vspace_root, seL4_CPtr frame, void 
                     cacheable, objects, num_objects);
 }
 
-//#ifndef CONFIG_ARCH_RISCV
+//#ifndef CONFIG_ARCH_RISCV and ARCH_LOONGARCH
 #if (!defined CONFIG_ARCH_RISCV) && (!defined CONFIG_ARCH_LOONGARCH)
 int sel4utils_map_iospace_page(vka_t *vka, seL4_CPtr iospace, seL4_CPtr frame, seL4_Word vaddr,
                                seL4_CapRights_t rights, int cacheable, seL4_Word size_bits,
@@ -99,7 +99,7 @@ int sel4utils_map_iospace_page(vka_t *vka, seL4_CPtr iospace, seL4_CPtr frame, s
     return map_page(vka, vspace_iospace_map_page, vspace_get_iospace_map_obj, iospace, frame, (void *) vaddr, rights,
                     cacheable, pts, num_pts);
 }
-#endif /* CONFIG_ARCH_RISCV */
+#endif /* CONFIG_ARCH_RISCV and CONFIG_ARCH_LOONGARCH */
 #ifdef CONFIG_VTX
 
 /*map a frame into guest os's physical address space*/
