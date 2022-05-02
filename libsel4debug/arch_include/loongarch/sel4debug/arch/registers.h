@@ -13,7 +13,6 @@ static UNUSED const char *register_names[] = {
     "pc",
     "ra",
     "sp",
-    "gp",
 
     "s0",
     "s1",
@@ -25,8 +24,6 @@ static UNUSED const char *register_names[] = {
     "s7",
     "s8",
     "s9",
-    "s10",
-    "s11",
 
     "a0",
     "a1",
@@ -44,6 +41,8 @@ static UNUSED const char *register_names[] = {
     "t4",
     "t5",
     "t6",
+    "t7",
+    "t8",
 
     "tp",
 };
@@ -54,36 +53,36 @@ compile_time_assert(register_names_correct_size, sizeof(register_names) == sizeo
 compile_time_assert(pc_correct_position, offsetof(seL4_UserContext,  pc) ==  0 *  sizeof(seL4_Word));
 compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  ra) ==  1 *  sizeof(seL4_Word));
 compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  sp) ==  2 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  gp) ==  3 *  sizeof(seL4_Word));
 
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s0) ==  4 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s1) ==  5 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s2) ==  6 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s3) ==  7 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s4) ==  8 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s5) ==  9 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s6) == 10 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s7) == 11 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s8) == 12 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s9) == 13 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext, s10) == 14 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext, s11) == 15 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s0) ==  3 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s1) ==  4 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s2) ==  5 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s3) ==  6 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s4) ==  7 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s5) ==  8 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s6) ==  9 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s7) == 10 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s8) == 11 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  s9) == 12 *  sizeof(seL4_Word));
 
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a0) == 16 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a1) == 17 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a2) == 18 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a3) == 19 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a4) == 20 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a5) == 21 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a6) == 22 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a7) == 23 *  sizeof(seL4_Word));
 
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t0) == 24 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t1) == 25 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t2) == 26 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t3) == 27 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t4) == 28 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t5) == 29 *  sizeof(seL4_Word));
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t6) == 30 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a0) == 13 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a1) == 14 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a2) == 15 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a3) == 16 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a4) == 17 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a5) == 18 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a6) == 19 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  a7) == 20 *  sizeof(seL4_Word));
 
-compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  tp) == 31 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t0) == 21 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t1) == 22 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t2) == 23 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t3) == 24 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t4) == 25 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t5) == 26 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t6) == 27 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t7) == 28 *  sizeof(seL4_Word));
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  t8) == 29 *  sizeof(seL4_Word));
+
+compile_time_assert(sp_correct_position, offsetof(seL4_UserContext,  tp) == 30 *  sizeof(seL4_Word));
