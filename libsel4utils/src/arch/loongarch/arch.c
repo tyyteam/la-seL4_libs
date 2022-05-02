@@ -24,12 +24,12 @@ int sel4utils_arch_init_context_with_args(void *entry_point, void *arg0, void *a
                                           bool local_stack, void *stack_top, seL4_UserContext *context,
                                           vka_t *vka, vspace_t *local_vspace, vspace_t *remote_vspace)
 {
-    extern char __global_pointer$[];
+    //extern char __global_pointer$[];
 
     context->a0 = (seL4_Word) arg0;
     context->a1 = (seL4_Word) arg1;
     context->a2 = (seL4_Word) arg2;
-    context->gp = (seL4_Word) __global_pointer$;
+    //context->gp = (seL4_Word) __global_pointer$;
 
     return sel4utils_arch_init_context(entry_point, stack_top, context);
 }
