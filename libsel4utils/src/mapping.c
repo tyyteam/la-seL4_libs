@@ -90,7 +90,8 @@ int sel4utils_map_page(vka_t *vka, seL4_CPtr vspace_root, seL4_CPtr frame, void 
                     cacheable, objects, num_objects);
 }
 
-#ifndef CONFIG_ARCH_RISCV
+//#ifndef CONFIG_ARCH_RISCV
+#if (!defined CONFIG_ARCH_RISCV) && (!defined CONFIG_ARCH_LOONGARCH)
 int sel4utils_map_iospace_page(vka_t *vka, seL4_CPtr iospace, seL4_CPtr frame, seL4_Word vaddr,
                                seL4_CapRights_t rights, int cacheable, seL4_Word size_bits,
                                vka_object_t *pts, int *num_pts)
