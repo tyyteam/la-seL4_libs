@@ -35,7 +35,7 @@ static const UNUSED size_t sel4_page_sizes[] = {
 #define seL4_ARCH_PageDirectoryObject  seL4_LOONGARCH_PageTableObject
 #define seL4_ARCH_Default_VMAttributes seL4_LOONGARCH_Default_VMAttributes
 #define seL4_ARCH_VMAttributes         seL4_LOONGARCH_VMAttributes
-#define seL4_ARCH_4KPage                0 //We do not use 4K Page
+// #define seL4_ARCH_4KPage                0 //We do not use 4K Page
 #define seL4_ARCH_16KPage              seL4_LOONGARCH_16K_Page
 #define seL4_ARCH_Uncached_VMAttributes 0
 #define seL4_ARCH_LargePageObject      seL4_LOONGARCH_Mega_Page
