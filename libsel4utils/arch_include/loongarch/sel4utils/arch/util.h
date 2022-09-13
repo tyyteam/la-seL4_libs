@@ -14,7 +14,8 @@
 static inline int sel4utils_is_read_fault(void)
 {
     seL4_Word fsr = seL4_GetMR(seL4_VMFault_FSR);
-    return (fsr == 1 || fsr == 2 || fsr == 5);
+    /* 目前没考虑特权等级无效例外，这可能是read或write触发的 */
+    return (fsr == 1 || fsr == 3 || fsr == 5 || fsr == 6);
 }
 
 static inline void sel4utils_set_instruction_pointer(seL4_UserContext *regs,
